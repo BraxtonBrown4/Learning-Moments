@@ -1,0 +1,16 @@
+Table User {
+    id int [pk, increment]
+    name varchar
+    email varchar
+    cohort id
+}
+
+Table Post {
+    id int [pk, increment]
+    
+}
+
+Table Topics {
+    id int [pk, increment]
+    
+}
