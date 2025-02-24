@@ -5,12 +5,27 @@ Table User {
     cohort id
 }
 
-Table Post {
+Table UserLikesPost {
     id int [pk, increment]
-    
+    userId int
+    postId int
 }
 
-Table Topics {
+Table Post {
     id int [pk, increment]
-    
+    creatorId int
+    topicId int
+    title varchar
+    body varchar
+    date int
 }
+
+Table Topic {
+    id int [pk, increment]
+    subject varchar
+}
+
+Ref: User.id < Post.creatorId
+Ref: User.id < UserLikesPost.userId
+Ref: Post.id > UserLikesPost.postId
+Ref: Topic.id < Post.topicId
