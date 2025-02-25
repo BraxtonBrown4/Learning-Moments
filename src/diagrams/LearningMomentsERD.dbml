@@ -9,6 +9,7 @@ Table UserLikesPost {
     id int [pk, increment]
     userId int
     postId int
+    liked boolean
 }
 
 Table Post {
