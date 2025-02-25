@@ -2,7 +2,7 @@ Table User {
     id int [pk, increment]
     name varchar
     email varchar
-    cohort id
+    cohort int
 }
 
 Table UserLikesPost {
