@@ -1,0 +1,19 @@
+.post {
+    width: 30%;
+    margin: 1.75% 0;
+  
+    .postTextAlign {
+      text-align: center;
+    }
+    
+    .titleColor {
+      color: white;
+      background-color: gray;
+    }
+  }
+  
+  .allPosts {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
