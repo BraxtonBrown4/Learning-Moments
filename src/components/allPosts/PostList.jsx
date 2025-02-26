@@ -46,6 +46,7 @@ export const PostList = () => {
 
     return (
         <div>
+            <div className="whiteSpace"></div>
             <FilterUtilities topics={topics} setTopicId={setTopicId} setSearchTerm={setSearchTerm} />
             <div className="allPosts">
                 {filteredPosts.map(post => {
