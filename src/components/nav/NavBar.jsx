@@ -7,18 +7,27 @@ export const NavBar = () => {
     return (
         <ul className="nav-bar">
             <div className="nav-btns">
-            <li className="btn btn-light nav-btn-color">
-                <Link to="/">All Posts</Link>
-            </li>
+                <li className="btn btn-light nav-btn-color">
+                    <Link to="/">All Posts</Link>
+                </li>
             </div>
             <div className="profile-logout">
-            <li className="btn btn-light nav-btn-color">
-                <Link to="">Profile</Link>
-            </li>
-            <li className="btn btn-danger nav-btn-color">
-                <Link to="">Logout</Link>
-            </li>
+                <li className="btn btn-light nav-btn-color">
+                    <Link to="">Profile</Link>
+                </li>
+
+                {localStorage.getItem("learning_user") ? (
+                    <li className="btn btn-danger nav-btn-color">
+                        <Link to="" onClick={() => {
+                            localStorage.removeItem("learning_user")
+                            navigate("/", { replace: true })
+                        }}>Logout</Link>
+                    </li>) : ("")}
             </div>
         </ul>
     )
 }
+
+{/* <li className="btn btn-danger nav-btn-color">
+                <Link to="">Logout</Link>
+            </li> */}
