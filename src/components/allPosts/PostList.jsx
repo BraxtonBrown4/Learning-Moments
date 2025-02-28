@@ -17,9 +17,7 @@ export const PostList = () => {
         getAllPosts().then(postsArray => {
             setAllPosts(postsArray)
         })
-    }, [])
 
-    useEffect(() => {
         getAllTopics().then((res) => {
             setTopics(res)
         })
