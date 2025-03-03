@@ -85,7 +85,9 @@
       .postDetailsBody {
         width: 90%;
         min-height: 20%;
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border-radius: 1.5rem;
         background-color: white;
         color: black;
