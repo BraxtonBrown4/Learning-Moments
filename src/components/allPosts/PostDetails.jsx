@@ -20,8 +20,8 @@ export const PostDetails = ({ currentUser }) => {
                     <div className="postAuthorPosition">
                         {
                         post?.userId === currentUser?.id ?
-                        <div className="authorAndEdit"><div className="postDetailsContents">{post?.user?.fullName}</div>  <Link to="/"><div className="postDetailsContents">Edit Post</div></Link></div> : 
-                        <Link to="/"><div className="postDetailsContents">{post?.user?.fullName}</div></Link>  //takes user to edit post page
+                        <div className="authorAndEdit"><div className="postDetailsContents">{post?.user?.fullName}</div>  <Link to="/"><div className="postDetailsContents">Edit Post</div></Link></div> :   //takes user to edit post page
+                        <Link to="/"><div className="postDetailsContents">{post?.user?.fullName}</div></Link> //takes user to creator page
                     }
                     </div>
                     <div className="postDetailsContents">{post?.title}</div>
