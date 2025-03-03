@@ -186,7 +186,7 @@
   "posts": [
     {
       "id": 1,
-      "creatorId": 1,
+      "userId": 1,
       "topicId": 1,
       "title": "Introduction to JavaScript",
       "body": "This post covers the basics of JavaScript.",
@@ -194,7 +194,7 @@
     },
     {
       "id": 2,
-      "creatorId": 1,
+      "userId": 1,
       "topicId": 2,
       "title": "Advanced React Patterns",
       "body": "This post dives deep into React design patterns.",
@@ -202,7 +202,7 @@
     },
     {
       "id": 3,
-      "creatorId": 1,
+      "userId": 1,
       "topicId": 3,
       "title": "Node.js for Beginners",
       "body": "Learn how to set up a basic Node.js application.",
@@ -210,7 +210,7 @@
     },
     {
       "id": 4,
-      "creatorId": 1,
+      "userId": 1,
       "topicId": 4,
       "title": "CSS Grid Layout",
       "body": "Understanding and using CSS Grid Layout for modern web designs.",
@@ -218,7 +218,7 @@
     },
     {
       "id": 5,
-      "creatorId": 1,
+      "userId": 1,
       "topicId": 5,
       "title": "Version Control with Git",
       "body": "Learn the basics of Git and version control.",
@@ -226,7 +226,7 @@
     },
     {
       "id": 6,
-      "creatorId": 2,
+      "userId": 2,
       "topicId": 1,
       "title": "JavaScript Closures",
       "body": "An in-depth look at closures in JavaScript.",
@@ -234,7 +234,7 @@
     },
     {
       "id": 7,
-      "creatorId": 2,
+      "userId": 2,
       "topicId": 2,
       "title": "React Hooks Explained",
       "body": "This post explains React Hooks in detail.",
@@ -242,7 +242,7 @@
     },
     {
       "id": 8,
-      "creatorId": 2,
+      "userId": 2,
       "topicId": 3,
       "title": "Express.js for REST APIs",
       "body": "How to build REST APIs with Express.js.",
@@ -250,7 +250,7 @@
     },
     {
       "id": 9,
-      "creatorId": 2,
+      "userId": 2,
       "topicId": 4,
       "title": "Flexbox vs Grid",
       "body": "Comparing Flexbox and Grid in CSS.",
@@ -258,7 +258,7 @@
     },
     {
       "id": 10,
-      "creatorId": 2,
+      "userId": 2,
       "topicId": 5,
       "title": "Git Workflow Best Practices",
       "body": "A guide to Git workflows for teams.",
@@ -266,7 +266,7 @@
     },
     {
       "id": 11,
-      "creatorId": 3,
+      "userId": 3,
       "topicId": 1,
       "title": "JavaScript ES6 Features",
       "body": "Exploring the new features in ES6 JavaScript.",
@@ -274,7 +274,7 @@
     },
     {
       "id": 12,
-      "creatorId": 3,
+      "userId": 3,
       "topicId": 2,
       "title": "React Context API",
       "body": "How to use the React Context API effectively.",
@@ -282,7 +282,7 @@
     },
     {
       "id": 13,
-      "creatorId": 3,
+      "userId": 3,
       "topicId": 3,
       "title": "Building APIs with Node.js",
       "body": "Creating APIs using Node.js and Express.",
@@ -290,7 +290,7 @@
     },
     {
       "id": 14,
-      "creatorId": 3,
+      "userId": 3,
       "topicId": 4,
       "title": "SASS vs CSS",
       "body": "Comparing SASS and plain CSS for styling.",
@@ -298,7 +298,7 @@
     },
     {
       "id": 15,
-      "creatorId": 3,
+      "userId": 3,
       "topicId": 5,
       "title": "Collaborating with Git",
       "body": "Best practices for collaborating on projects using Git.",
@@ -306,7 +306,7 @@
     },
     {
       "id": 16,
-      "creatorId": 4,
+      "userId": 4,
       "topicId": 1,
       "title": "Mastering JavaScript",
       "body": "A guide to mastering JavaScript fundamentals.",
@@ -314,7 +314,7 @@
     },
     {
       "id": 17,
-      "creatorId": 4,
+      "userId": 4,
       "topicId": 2,
       "title": "Building Components in React",
       "body": "Learn how to build reusable components in React.",
@@ -322,7 +322,7 @@
     },
     {
       "id": 18,
-      "creatorId": 4,
+      "userId": 4,
       "topicId": 3,
       "title": "Node.js Asynchronous Programming",
       "body": "Master asynchronous programming in Node.js.",
@@ -330,7 +330,7 @@
     },
     {
       "id": 19,
-      "creatorId": 4,
+      "userId": 4,
       "topicId": 4,
       "title": "CSS Animations",
       "body": "Creating smooth CSS animations for your websites.",
@@ -338,7 +338,7 @@
     },
     {
       "id": 20,
-      "creatorId": 4,
+      "userId": 4,
       "topicId": 5,
       "title": "GitHub Actions for CI/CD",
       "body": "Learn how to set up GitHub Actions for continuous integration.",
@@ -346,7 +346,7 @@
     },
     {
       "id": 21,
-      "creatorId": 5,
+      "userId": 5,
       "topicId": 1,
       "title": "JavaScript Arrays and Methods",
       "body": "An introduction to arrays in JavaScript.",
@@ -354,7 +354,7 @@
     },
     {
       "id": 22,
-      "creatorId": 5,
+      "userId": 5,
       "topicId": 2,
       "title": "React Performance Optimization",
       "body": "Tips and tricks for optimizing React performance.",
@@ -362,7 +362,7 @@
     },
     {
       "id": 23,
-      "creatorId": 5,
+      "userId": 5,
       "topicId": 3,
       "title": "Server-Side Rendering with React",
       "body": "Understanding server-side rendering in React.",
@@ -370,7 +370,7 @@
     },
     {
       "id": 24,
-      "creatorId": 5,
+      "userId": 5,
       "topicId": 4,
       "title": "CSS Variables",
       "body": "How to use CSS variables to create maintainable styles.",
@@ -378,7 +378,7 @@
     },
     {
       "id": 25,
-      "creatorId": 5,
+      "userId": 5,
       "topicId": 5,
       "title": "Advanced Git Techniques",
       "body": "Learn advanced Git techniques for version control.",

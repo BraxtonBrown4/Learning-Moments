@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
-import { getAllPosts } from "../../services/AllPostsService"
+import { getAllPosts } from "../../services/PostsService.js"
 import { getAllTopics } from "../../services/AllTopicsService.js"
 import { Post } from "./Post.jsx"
 import { FilterUtilities } from "../filterUtilities/FilterUtilities.jsx"
+import { Link } from "react-router-dom"
 import "./Posts.css"
 
 export const PostList = () => {
@@ -11,7 +12,6 @@ export const PostList = () => {
     const [topics, setTopics] = useState([])
     const [topicId, setTopicId] = useState(0)
     const [searchTerm, setSearchTerm] = useState('')
-    const [postId, setPostId] = useState(0)
 
     useEffect(() => {
         getAllPosts().then(postsArray => {
@@ -38,17 +38,17 @@ export const PostList = () => {
 
     }, [allPosts, topicId, searchTerm])
 
-    useEffect(() => {
-        console.log('click')
-    }, [postId])
-
     return (
         <div>
             <div></div>
             <FilterUtilities topics={topics} setTopicId={setTopicId} setSearchTerm={setSearchTerm} />
             <div className="allPosts">
                 {filteredPosts.map(post => {
-                    return <Post className="post" post={post} setPostId={setPostId} key={post.id} />
+                    return (
+                        <Link to={`/allposts/${post.id}`} key={post.id}>
+                            <Post className="post" post={post}/>
+                        </Link>
+                    )
                 })}
             </div>
         </div>

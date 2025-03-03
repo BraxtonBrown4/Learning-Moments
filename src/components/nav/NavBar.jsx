@@ -27,7 +27,3 @@ export const NavBar = () => {
         </ul>
     )
 }
-
-{/* <li className="btn btn-danger nav-btn-color">
-                <Link to="">Logout</Link>
-            </li> */}

@@ -1,4 +1,3 @@
-
 .allPosts {
   display: flex;
   justify-content: space-around;
@@ -6,14 +5,94 @@
 }
 
 .post {
-    width: 30%;
-    margin: 1.75% 0;
+  width: 30vw;
+  height: 8rem;
+  margin: 1.75% 0;
 
-    .postTextAlign {
-      text-align: center;
+  .postTextAlign {
+    text-align: center;
+  }
+
+  .titleColor {
+    color: white;
+    background-color: gray;
+  }
+}
+
+.container {
+  width: 100vw;
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+
+  .backgroundBox {
+    display: flex;
+    justify-content: center;
+    width: 70vw;
+    min-height: 80vh;
+    background-color: gray;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
+    .postDetails {
+      width: 70%;
+      height: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5rem;
+      background-color: #343a40;
+      margin-top: 3%;
+      margin-bottom: 3%;
+
+      .postAuthorPosition {
+        width: 90%;
+        display: flex;
+        justify-content: flex-end;
+
+        .authorAndEdit {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      a {
+        color: black;
+      }
+
+      a:hover {
+        transform: scale(1.1);
+        transition: transform 0.2s ease-in-out;
     }
-    .titleColor {
-      color: white;
-      background-color: gray;
+      
+
+      .postDetailsContents {
+        padding: 1% 2%;
+        background-color: white;
+        margin: 1.5%;
+        text-align: center;
+      }
+
+      .postLikes {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+      }
+
+      .postDetailsBody {
+        width: 90%;
+        min-height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1.5rem;
+        background-color: white;
+        color: black;
+        margin: 1rem;
+      }
     }
+  }
 }
