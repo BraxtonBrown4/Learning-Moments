@@ -45,7 +45,7 @@ export const PostList = () => {
             <div className="allPosts">
                 {filteredPosts.map(post => {
                     return (
-                        <Link to={`/allposts/${post.id}`} key={post.id}>
+                        <Link to={`/all-posts/${post.id}`} key={post.id}>
                             <Post className="post" post={post}/>
                         </Link>
                     )

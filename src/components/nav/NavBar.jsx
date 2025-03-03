@@ -7,8 +7,11 @@ export const NavBar = () => {
     return (
         <ul className="nav-bar">
             <div className="nav-btns">
-                <li className="btn btn-light nav-btn-color">
+                <li className="btn btn-light nav-btn-color nav-btn">
                     <Link to="/">All Posts</Link>
+                </li>
+                <li className="btn btn-light nav-btn-color nav-btn">
+                    <Link to="/new-post">Create New Post</Link>
                 </li>
             </div>
             <div className="profile-logout">
