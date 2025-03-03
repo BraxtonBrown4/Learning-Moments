@@ -21,7 +21,7 @@ export const ApplicationViews = () => {
             <Route path="/" element={<><NavBar /> <Outlet /></>}>
                 <Route index element={<PostList />} />
                 <Route path="/all-posts/:postId" element={<PostDetails currentUser={currentUser}/>} />
-                <Route path="/new-post" element={<NewPost/>}/>
+                <Route path="/new-post" element={<NewPost currentUser={currentUser}/>}/>
             </Route>
         </Routes>
     )
