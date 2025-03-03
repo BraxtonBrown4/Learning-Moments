@@ -1,20 +1,56 @@
 import { useEffect, useState } from "react"
 import { getAllTopics } from "../../services/AllTopicsService"
 import "./Posts.css"
+import { getUserById } from "../../services/userService"
+import { createNewPost } from "../../services/PostsService"
 
 export const NewPost = ({ currentUser }) => {
    const [topics, setTopics] = useState([])
+   const [userInfo, setUserInfo] = useState(0)
    const [placeHolder, setPlaceHolder] = useState('Topic')
 
+   const [title, setTitle] = useState(0)
+   const [topicId, setTopicId] = useState(0)
+   const [body, setBody] = useState(0)
+
    //setUnixTime(Math.floor(Date.now() / 1000)
+   /*
+   {
+      "id": 1,
+      "userId": 1,
+      "topicId": 1,
+      "title": "Introduction to JavaScript",
+      "body": "This post covers the basics of JavaScript.",
+      "date": 1708828800
+    },
+   */
 
 
    useEffect(() => {
       getAllTopics().then(res => {
          setTopics(res)
-      }
+      },
+
+         getUserById(currentUser.id).then(res => {
+            const user = res[0]
+            setUserInfo(user)
+         })
       )
-   }, [])
+   }, [currentUser])
+
+   const handleCreateBtn = () => {
+      const newPost = {
+         "userId": currentUser.id,
+         "topicId": topicId,
+         "title": title,
+         "body": body,
+         "date": Math.floor(Date.now() / 1000),
+      }
+
+      Object.values(newPost).some(value => value === 0) ?
+         alert('Please Fill Out All Forms') :
+         createNewPost(newPost)
+   }
 
    return (
       <div className="container">
@@ -22,16 +58,17 @@ export const NewPost = ({ currentUser }) => {
             <div className="postDetails">
                <div className="postAuthorPosition">
                   <div className="authorAndEdit">
-                     <div className="postDetailsContents">author</div>
+                     <div className="postDetailsContents">{userInfo?.fullName}</div>
                   </div>
                </div>
-               <input className="newPostInputs" placeholder="Title" />
+               <input className="newPostInputs" onChange={(event) => {setTitle(event.target.value)}} placeholder="Title" />
                <div className="dropdown">
                   <button className="btn btn-secondary dropdown-toggle topicBtn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">{placeHolder}</button>
                   <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                      {topics.map(topic => {
                         return <li key={topic.id}><a className="dropdown-item" href="#" onClick={() => {
                            setPlaceHolder(topic.name)
+                           setTopicId(topic.id)
                         }
                         }>{topic.name}</a></li>
                      })}
@@ -43,8 +80,10 @@ export const NewPost = ({ currentUser }) => {
                   day: 'numeric',
                   hour: '2-digit',
                   minute: '2-digit',
-                  hour12: true})}</div>
-               <input className="postDetailsBody newPostInputs" placeholder="Content" />
+                  hour12: true
+               })}</div>
+               <input className="postDetailsBody newPostInputs" onChange={(event) => {setBody(event.target.value)}} placeholder="Body" />
+               <button type="button" className="btn btn-success createBtn" onClick={handleCreateBtn}>Create</button>
             </div>
          </div>
       </div>

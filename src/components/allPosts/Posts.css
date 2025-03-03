@@ -85,9 +85,7 @@
       .postDetailsBody {
         width: 90%;
         min-height: 20%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        text-align: center;
         border-radius: 1.5rem;
         background-color: white;
         color: black;
@@ -108,4 +106,8 @@
 .topicBtn {
   background-color: white;
   color: black;
+}
+
+.createBtn {
+  padding: 1% 2.5%;
 }
