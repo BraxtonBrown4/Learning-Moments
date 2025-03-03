@@ -3,6 +3,7 @@ import { getAllTopics } from "../../services/AllTopicsService"
 import "./Posts.css"
 import { getUserById } from "../../services/userService"
 import { createNewPost } from "../../services/PostsService"
+import { useNavigate } from "react-router-dom"
 
 export const NewPost = ({ currentUser }) => {
    const [topics, setTopics] = useState([])
@@ -13,18 +14,7 @@ export const NewPost = ({ currentUser }) => {
    const [topicId, setTopicId] = useState(0)
    const [body, setBody] = useState(0)
 
-   //setUnixTime(Math.floor(Date.now() / 1000)
-   /*
-   {
-      "id": 1,
-      "userId": 1,
-      "topicId": 1,
-      "title": "Introduction to JavaScript",
-      "body": "This post covers the basics of JavaScript.",
-      "date": 1708828800
-    },
-   */
-
+   const navigate = useNavigate()
 
    useEffect(() => {
       getAllTopics().then(res => {
@@ -47,9 +37,9 @@ export const NewPost = ({ currentUser }) => {
          "date": Math.floor(Date.now() / 1000),
       }
 
-      Object.values(newPost).some(value => value === 0) ?
+      Object.values(newPost).some(value => value === 0 || value.length === 0) ?
          alert('Please Fill Out All Forms') :
-         createNewPost(newPost)
+         (createNewPost(newPost), navigate('/')) //add my posts url here
    }
 
    return (
