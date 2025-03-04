@@ -10,7 +10,7 @@ export const Post = ({ post, postsLocation, setPostToDelete }) => {
                 </Link>
                 <h2>Topic: {post.topic.name}</h2>
                 {
-                    postsLocation === '/my-posts' ?
+                    setPostToDelete ?
                         <div className="likesAndDelete">
                             <h2>👍 {post.userLikesPost.length} Likes</h2>
                             <button type="button" className="btn btn-danger" onClick={() => { setPostToDelete(post.id) }}>Delete</button>

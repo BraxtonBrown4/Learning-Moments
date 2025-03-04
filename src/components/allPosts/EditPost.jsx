@@ -1,4 +1,3 @@
-
 export const EditPost = ({ currentUser }) => {
     return (
         <div>
