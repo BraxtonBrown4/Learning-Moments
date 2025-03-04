@@ -25,7 +25,7 @@ export const ApplicationViews = () => {
                 <Route path="/:postLocation/:postId" element={<PostDetails currentUser={currentUser}/>} />
                 <Route path="/new-post" element={<NewPost currentUser={currentUser}/>}/>
                 <Route path="/my-posts" element={<MyPosts currentUser={currentUser}/>}/>
-                <Route path="/:postLocation/:postId/edit-post" element={<EditPost/>}/>
+                <Route path="/:postLocation/:postId/edit-post" element={<EditPost currentUser={currentUser}/>}/>
             </Route>
         </Routes>
     )

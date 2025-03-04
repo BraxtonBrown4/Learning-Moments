@@ -5,6 +5,7 @@ import "./Posts.css"
 
 export const PostDetails = ({ currentUser }) => {
     const [post, setPost] = useState()
+    
     const { postLocation, postId } = useParams()
 
     useEffect(() => {
