@@ -19,13 +19,12 @@ export const NewPost = ({ currentUser }) => {
    useEffect(() => {
       getAllTopics().then(res => {
          setTopics(res)
-      },
+      })
 
-         getUserById(currentUser.id).then(res => {
-            const user = res[0]
-            setUserInfo(user)
-         })
-      )
+   getUserById(currentUser.id).then(res => {
+      const user = res[0]
+      setUserInfo(user)
+   })
    }, [currentUser])
 
    const handleCreateBtn = () => {
@@ -39,7 +38,7 @@ export const NewPost = ({ currentUser }) => {
 
       Object.values(newPost).some(value => value === 0 || value.length === 0) ?
          alert('Please Fill Out All Forms') :
-         (createNewPost(newPost), navigate('/')) //add my posts url here
+         (createNewPost(newPost), navigate('/my-posts'))
    }
 
    return (
