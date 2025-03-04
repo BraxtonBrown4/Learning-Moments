@@ -1,29 +1,30 @@
 import { useEffect, useState } from "react"
-import { getAllPosts } from "../../services/PostsService.js"
+import { deletePostById, getMyPosts } from "../../services/PostsService.js"
 import { getAllTopics } from "../../services/AllTopicsService.js"
 import { Post } from "./Post.jsx"
 import { FilterUtilities } from "../filterUtilities/FilterUtilities.jsx"
 import "./Posts.css"
 
-export const PostList = () => {
-    const [allPosts, setAllPosts] = useState([])
-    const [filteredPosts, setFilteredPosts] = useState(allPosts)
+export const MyPosts = ({ currentUser }) => {
+    const [myPosts, setmyPosts] = useState([])
+    const [filteredPosts, setFilteredPosts] = useState(myPosts)
     const [topics, setTopics] = useState([])
     const [topicId, setTopicId] = useState(0)
     const [searchTerm, setSearchTerm] = useState('')
+    const [postToDelete, setPostToDelete] = useState(0)
 
     useEffect(() => {
-        getAllPosts().then(postsArray => {
-            setAllPosts(postsArray)
+        getMyPosts(currentUser.id).then(postsArray => {
+            setmyPosts(postsArray)
         })
 
         getAllTopics().then((res) => {
             setTopics(res)
         })
-    }, [])
+    }, [currentUser, postToDelete])
 
     useEffect(() => {
-        let updatedPosts = allPosts
+        let updatedPosts = myPosts
 
         if (topicId > 0) {
             updatedPosts = updatedPosts.filter((post) => post.topic.id === topicId)
@@ -35,7 +36,11 @@ export const PostList = () => {
 
         setFilteredPosts(updatedPosts)
 
-    }, [allPosts, topicId, searchTerm])
+    }, [myPosts, topicId, searchTerm])
+
+    useEffect(()=>{
+        postToDelete > 0 && deletePostById(postToDelete)
+    }, [postToDelete])
 
     return (
         <div>
@@ -43,7 +48,7 @@ export const PostList = () => {
             <div className="allPosts">
                 {filteredPosts.map(post => {
                     return (
-                        <Post className="post" post={post} postsLocation={'/all-posts'} key={post.id}/>
+                        <Post className="post" post={post} postsLocation={'/my-posts'} setPostToDelete={setPostToDelete} key={post.id}/>
                     )
                 })}
             </div>

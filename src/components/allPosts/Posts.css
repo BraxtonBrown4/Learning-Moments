@@ -113,3 +113,11 @@
 .createBtn {
   padding: 1% 2.5%;
 }
+
+.likesAndDelete {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0 15%;
+  align-items: center;
+}

@@ -13,6 +13,9 @@ export const NavBar = () => {
                 <li className="btn btn-light nav-btn-color nav-btn">
                     <Link to="/new-post">Create New Post</Link>
                 </li>
+                <li className="btn btn-light nav-btn-color nav-btn">
+                    <Link to="/my-posts">My Posts</Link>
+                </li>
             </div>
             <div className="profile-logout">
                 <li className="btn btn-light nav-btn-color">

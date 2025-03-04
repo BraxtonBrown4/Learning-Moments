@@ -1,10 +1,22 @@
-export const Post = ({ post }) => {
+import { Link } from "react-router-dom"
+
+export const Post = ({ post, postsLocation, setPostToDelete }) => {
+
     return (
         <div className="card post">
             <div className="postTextAlign card-body">
-                <h5 className="card-title titleColor">{post.title}</h5>
+                <Link to={`${postsLocation}/${post.id}`}>
+                    <h5 className="card-title titleColor">{post.title}</h5>
+                </Link>
                 <h2>Topic: {post.topic.name}</h2>
-                <h2>👍 {post.userLikesPost.length} Likes</h2>
+                {
+                    postsLocation === '/my-posts' ?
+                        <div className="likesAndDelete">
+                            <h2>👍 {post.userLikesPost.length} Likes</h2>
+                            <button type="button" className="btn btn-danger" onClick={() => { setPostToDelete(post.id) }}>Delete</button>
+                        </div> :
+                        <h2>👍 {post.userLikesPost.length} Likes</h2>
+                }
             </div>
         </div>
     )

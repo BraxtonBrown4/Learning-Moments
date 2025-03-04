@@ -4,6 +4,7 @@ import { Routes, Route, Outlet } from "react-router-dom"
 import { NavBar } from "../components/nav/NavBar"
 import { useEffect, useState } from "react"
 import { NewPost } from "../components/allPosts/NewPost"
+import { MyPosts } from "../components/allPosts/MyPosts"
 
 export const ApplicationViews = () => {
     const [currentUser, setCurrentUser] = useState({})
@@ -22,6 +23,8 @@ export const ApplicationViews = () => {
                 <Route index element={<PostList />} />
                 <Route path="/all-posts/:postId" element={<PostDetails currentUser={currentUser}/>} />
                 <Route path="/new-post" element={<NewPost currentUser={currentUser}/>}/>
+                <Route path="/my-posts" element={<MyPosts currentUser={currentUser}/>}/>
+                <Route path="/my-posts/:postId" element={<PostDetails currentUser={currentUser}/>} />
             </Route>
         </Routes>
     )
