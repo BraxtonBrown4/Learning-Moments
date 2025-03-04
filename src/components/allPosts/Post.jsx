@@ -6,7 +6,7 @@ export const Post = ({ post, postsLocation, setPostToDelete }) => {
         <div className="card post">
             <div className="postTextAlign card-body">
                 <Link to={`${postsLocation}/${post.id}`}>
-                    <h5 className="card-title titleColor">{post.title}</h5>
+                    <h5 className="card-title postTitle">{post.title}</h5>
                 </Link>
                 <h2>Topic: {post.topic.name}</h2>
                 {
