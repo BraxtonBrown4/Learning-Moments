@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { deletePostById, getMyPosts } from "../../services/PostsService.js"
+import { deletePostById, getAllPosts } from "../../services/PostsService.js"
 import { getAllTopics } from "../../services/AllTopicsService.js"
 import { Post } from "./Post.jsx"
 import { FilterUtilities } from "../filterUtilities/FilterUtilities.jsx"
@@ -14,8 +14,9 @@ export const MyPosts = ({ currentUser }) => {
     const [postToDelete, setPostToDelete] = useState(0)
 
     useEffect(() => {
-        getMyPosts(currentUser.id).then(postsArray => {
-            setmyPosts(postsArray)
+        getAllPosts(currentUser.id).then(postsArray => {
+            const myPosts = postsArray.filter(post => post.userId === currentUser.id)
+            setmyPosts(myPosts)
         })
 
         getAllTopics().then((res) => {
