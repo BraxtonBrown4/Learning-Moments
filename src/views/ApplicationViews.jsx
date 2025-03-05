@@ -3,9 +3,9 @@ import { PostDetails } from "../components/allPosts/PostDetails"
 import { Routes, Route, Outlet } from "react-router-dom"
 import { NavBar } from "../components/nav/NavBar"
 import { useEffect, useState } from "react"
-import { NewPost } from "../components/allPosts/NewPost"
+import { NewPost } from "../components/forms/NewPost"
 import { MyPosts } from "../components/allPosts/MyPosts"
-import { EditPost } from "../components/allPosts/EditPost"
+import { EditPost } from "../components/forms/EditPost"
 
 export const ApplicationViews = () => {
     const [currentUser, setCurrentUser] = useState({})

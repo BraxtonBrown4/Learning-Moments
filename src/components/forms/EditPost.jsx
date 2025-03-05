@@ -4,7 +4,7 @@ import { savePost, getPostById } from "../../services/PostsService"
 import { useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import "./Posts.css"
+import "./Forms.css"
 
 export const EditPost = ({ currentUser }) => {
     const [topics, setTopics] = useState([])

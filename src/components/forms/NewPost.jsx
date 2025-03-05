@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { getAllTopics } from "../../services/AllTopicsService"
-import "./Posts.css"
+import "./Forms.css"
 import { getUserById } from "../../services/userService"
 import { createNewPost } from "../../services/PostsService"
 import { useNavigate } from "react-router-dom"
