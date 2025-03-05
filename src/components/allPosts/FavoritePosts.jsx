@@ -4,6 +4,7 @@ import { getAllTopics } from "../../services/AllTopicsService.js"
 import { Post } from "./Post.jsx"
 import { FilterUtilities } from "../filterUtilities/FilterUtilities.jsx"
 import "./Posts.css"
+import { updateLike } from "../../services/LikeServices.js"
 
 export const FavoritePosts = ({ currentUser }) => {
     const [favorites, setfavorites] = useState([])
@@ -11,7 +12,7 @@ export const FavoritePosts = ({ currentUser }) => {
     const [topics, setTopics] = useState([])
     const [topicId, setTopicId] = useState(0)
     const [searchTerm, setSearchTerm] = useState('')
-    const [postToDelete, setPostToDelete] = useState(0)
+    const [likeObj, setLikeObj] = useState(0)
 
     useEffect(() => {
         getAllPosts(currentUser.id).then(postsArray => {
@@ -22,7 +23,7 @@ export const FavoritePosts = ({ currentUser }) => {
         getAllTopics().then((res) => {
             setTopics(res)
         })
-    }, [currentUser, postToDelete])
+    }, [currentUser])
 
     useEffect(() => {
         let updatedPosts = favorites
@@ -40,8 +41,17 @@ export const FavoritePosts = ({ currentUser }) => {
     }, [favorites, topicId, searchTerm])
 
     useEffect(()=>{
-        postToDelete > 0 && deletePostById(postToDelete)
-    }, [postToDelete])
+        likeObj.id > 0 && updateLike(likeObj)
+
+        getAllPosts(currentUser.id).then(postsArray => {
+            const favorites = postsArray.filter(post => post.userLikesPost.some(like => like.userId === currentUser.id && like.liked === true))
+            setfavorites(favorites)
+        })
+
+        getAllTopics().then((res) => {
+            setTopics(res)
+        })
+    }, [likeObj])
 
     return (
         <div>
@@ -49,7 +59,7 @@ export const FavoritePosts = ({ currentUser }) => {
             <div className="allPosts">
                 {filteredPosts.map(post => {
                     return (
-                        <Post className="post" post={post} postsLocation={'/favorites'} currentUser={currentUser} key={post.id}/>
+                        <Post className="post" post={post} postsLocation={'/favorites'} currentUser={currentUser} setLikeObj={setLikeObj} key={post.id}/>
                     )
                 })}
             </div>

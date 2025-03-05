@@ -40,7 +40,10 @@ export const PostDetails = ({ currentUser }) => {
 
         if (like) {
             updateLike(likeCopy)
-            navigate('/favorites')
+            likeCopy.liked ?
+            navigate('/favorites') : postLocation === "all-posts" ? 
+            navigate('/') :
+            navigate(`/${postLocation}`)
         } else {
             createLike({ userId: currentUser.id, postId: parseInt(postId), liked: true })
             navigate('/favorites')
