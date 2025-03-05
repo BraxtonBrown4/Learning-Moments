@@ -15,7 +15,7 @@ export const createUser = (user) => {
 }
 
 export const getUserById = (userId) => {
-  return fetch(`http://localhost:8088/users?id=${userId}`).then((res) =>
+  return fetch(`http://localhost:8088/users?id=${userId}&_embed=posts`).then((res) =>
     res.json()
   )
 }

@@ -22,7 +22,7 @@ export const NavBar = () => {
             </div>
             <div className="profile-logout">
                 <li className="btn btn-light nav-btn-color">
-                    <Link to="">Profile</Link>
+                    <Link to="/profile">Profile</Link>
                 </li>
 
                 {localStorage.getItem("learning_user") ? (
