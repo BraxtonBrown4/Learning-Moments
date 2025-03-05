@@ -1,18 +1,49 @@
 import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
-import { getPostById } from "../../services/PostsService"
+import { Link, useNavigate, useParams } from "react-router-dom"
+import { createLike, getPostById, doesLikeExist, updateLike } from "../../services/PostsService"
 import "./Posts.css"
 
 export const PostDetails = ({ currentUser }) => {
     const [post, setPost] = useState()
-    
+    const [like, setLike] = useState(0)
+    const [isLiked, setIsLiked] = useState(false)
+    const [postLikes, setPostLikes] = useState(0)
+
     const { postLocation, postId } = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         getPostById(postId).then((res) => {
             setPost(res)
-        })
-    }, [])
+            const onlyThumbsUp = res.userLikesPost.filter(like => like.liked === true)
+            setPostLikes(onlyThumbsUp.length)
+        }).then(
+            doesLikeExist(currentUser.id, parseInt(postId)).then((likeObj) => {
+                if (likeObj.length > 0) {
+                    setLike(likeObj[0])
+                }
+            })
+        )
+    }, [currentUser])
+
+    useEffect(()=>{
+        setIsLiked(like.liked)
+    }, [like])
+
+    const handleLikeBtn = () => {
+        const likeCopy = { ...like }
+        likeCopy.liked = !like.liked
+        setLike(likeCopy)
+        setIsLiked(!isLiked)
+
+        if (like) {
+            updateLike(likeCopy)
+            navigate('/') //insert favorites page url
+        } else {
+            createLike({ userId: currentUser.id, postId: parseInt(postId), liked: true })
+            navigate('/') //insert favorites page url
+        }
+    }
 
     return (
         <div className="container">
@@ -21,7 +52,10 @@ export const PostDetails = ({ currentUser }) => {
                     <div className="postAuthorPosition">
                         {
                             post?.userId === currentUser?.id ?
-                                <div className="authorAndEdit"><div className="postDetailsContents">{post?.user?.fullName}</div>  <Link to={`/${postLocation}/${post.id}/edit-post`}><div className="postDetailsContents">Edit Post</div></Link></div> :   //takes user to edit post page
+                                <div className="authorAndEdit">
+                                    <div className="postDetailsContents">{post?.user?.fullName}</div>
+                                    <Link to={`/${postLocation}/${post?.id}/edit-post`}><div className="postDetailsContents">Edit Post</div></Link>
+                                </div> :
                                 <Link to="/"><div className="postDetailsContents">{post?.user?.fullName}</div></Link> //takes user to creator page
                         }
                     </div>
@@ -37,9 +71,9 @@ export const PostDetails = ({ currentUser }) => {
                     })}</div>
                     <div className="postLikes">
                         {
-                            post?.userId !== currentUser?.id && <button className="postDetailsContents">insert toggle thumbs up and handler function to create liked post jointable👍</button>
+                            post?.userId !== currentUser?.id && <button className={isLiked ? "thumbsUp" : "postDetailsContents"} onClick={handleLikeBtn}>👍</button>
                         }
-                        <div className="postDetailsContents">{post?.userLikesPost.length} Likes</div>
+                        <div className="postDetailsContents">{postLikes} Likes</div>
                     </div>
                     <div className="postDetailsBody">{post?.body}</div>
                 </div>

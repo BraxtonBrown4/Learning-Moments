@@ -12,10 +12,10 @@ export const Post = ({ post, postsLocation, setPostToDelete }) => {
                 {
                     setPostToDelete ?
                         <div className="likesAndDelete">
-                            <h2>👍 {post.userLikesPost.length} Likes</h2>
+                            <h2>👍 {post.userLikesPost.filter(like => like.liked === true).length} Likes</h2>
                             <button type="button" className="btn btn-danger" onClick={() => { setPostToDelete(post.id) }}>Delete</button>
                         </div> :
-                        <h2>👍 {post.userLikesPost.length} Likes</h2>
+                        <h2>👍 {post.userLikesPost.filter(like => like.liked === true).length} Likes</h2>
                 }
             </div>
         </div>
