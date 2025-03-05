@@ -18,7 +18,7 @@ export const Profile = ({ currentUser, authorId }) => {
                 <div className="text-field">{profile.fullName}</div>
                 <div className="text-field">Cohort: {profile.cohort}</div>
                 <div className="text-field">Posts: {profile.posts?.length}</div>
-                {profile.id === currentUser.id && <button type="button" class="btn btn-light">Edit</button>}
+                {profile.id === currentUser.id && <button type="button" class="btn btn-light edit-btn">Edit</button>}
             </div>
         </div>
     )

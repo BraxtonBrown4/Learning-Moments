@@ -27,6 +27,10 @@
     align-items: center;
 }
 
+.edit-btn {
+    width: 20%;
+}
+
 .control-btns {
     margin: 5% 0;
     display: flex;
