@@ -5,7 +5,7 @@ import { Post } from "./Post.jsx"
 import { FilterUtilities } from "../filterUtilities/FilterUtilities.jsx"
 import "./Posts.css"
 
-export const PostList = () => {
+export const PostList = ({currentUser}) => {
     const [allPosts, setAllPosts] = useState([])
     const [filteredPosts, setFilteredPosts] = useState(allPosts)
     const [topics, setTopics] = useState([])
@@ -43,7 +43,7 @@ export const PostList = () => {
             <div className="allPosts">
                 {filteredPosts.map(post => {
                     return (
-                        <Post className="post" post={post} postsLocation={'/all-posts'} key={post.id}/>
+                        <Post className="post" post={post} postsLocation={'/all-posts'} currentUser={currentUser} key={post.id}/>
                     )
                 })}
             </div>

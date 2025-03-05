@@ -1,0 +1,9 @@
+.filled-heart-icon path {
+    fill: red;
+  }
+  
+  .unfilled-heart-icon path {
+    fill: none;
+    stroke: red;
+    stroke-width: 40;
+  }

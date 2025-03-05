@@ -5,9 +5,9 @@ import { Post } from "./Post.jsx"
 import { FilterUtilities } from "../filterUtilities/FilterUtilities.jsx"
 import "./Posts.css"
 
-export const MyPosts = ({ currentUser }) => {
-    const [myPosts, setmyPosts] = useState([])
-    const [filteredPosts, setFilteredPosts] = useState(myPosts)
+export const FavoritePosts = ({ currentUser }) => {
+    const [favorites, setfavorites] = useState([])
+    const [filteredPosts, setFilteredPosts] = useState(favorites)
     const [topics, setTopics] = useState([])
     const [topicId, setTopicId] = useState(0)
     const [searchTerm, setSearchTerm] = useState('')
@@ -15,8 +15,8 @@ export const MyPosts = ({ currentUser }) => {
 
     useEffect(() => {
         getAllPosts(currentUser.id).then(postsArray => {
-            const myPosts = postsArray.filter(post => post.userId === currentUser.id)
-            setmyPosts(myPosts)
+            const favorites = postsArray.filter(post => post.userLikesPost.some(like => like.userId === currentUser.id && like.liked === true))
+            setfavorites(favorites)
         })
 
         getAllTopics().then((res) => {
@@ -25,7 +25,7 @@ export const MyPosts = ({ currentUser }) => {
     }, [currentUser, postToDelete])
 
     useEffect(() => {
-        let updatedPosts = myPosts
+        let updatedPosts = favorites
 
         if (topicId > 0) {
             updatedPosts = updatedPosts.filter((post) => post.topic.id === topicId)
@@ -37,7 +37,7 @@ export const MyPosts = ({ currentUser }) => {
 
         setFilteredPosts(updatedPosts)
 
-    }, [myPosts, topicId, searchTerm])
+    }, [favorites, topicId, searchTerm])
 
     useEffect(()=>{
         postToDelete > 0 && deletePostById(postToDelete)
@@ -49,7 +49,7 @@ export const MyPosts = ({ currentUser }) => {
             <div className="allPosts">
                 {filteredPosts.map(post => {
                     return (
-                        <Post className="post" post={post} postsLocation={'/my-posts'} setPostToDelete={setPostToDelete} currentUser={currentUser} key={post.id}/>
+                        <Post className="post" post={post} postsLocation={'/favorites'} currentUser={currentUser} key={post.id}/>
                     )
                 })}
             </div>

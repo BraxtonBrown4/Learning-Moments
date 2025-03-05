@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { createLike, getPostById, doesLikeExist, updateLike } from "../../services/PostsService"
+import { getPostById} from "../../services/PostsService"
+import { createLike, doesLikeExist, updateLike  } from "../../services/LikeServices"
 import "./Posts.css"
+import { FilledHeartIcon, UnFilledHeartIcon } from "../heartIcons/HeartIcons"
 
 export const PostDetails = ({ currentUser }) => {
     const [post, setPost] = useState()
@@ -38,10 +40,10 @@ export const PostDetails = ({ currentUser }) => {
 
         if (like) {
             updateLike(likeCopy)
-            navigate('/') //insert favorites page url
+            navigate('/favorites')
         } else {
             createLike({ userId: currentUser.id, postId: parseInt(postId), liked: true })
-            navigate('/') //insert favorites page url
+            navigate('/favorites')
         }
     }
 
@@ -71,7 +73,7 @@ export const PostDetails = ({ currentUser }) => {
                     })}</div>
                     <div className="postLikes">
                         {
-                            post?.userId !== currentUser?.id && <button className={isLiked ? "thumbsUp" : "postDetailsContents"} onClick={handleLikeBtn}>👍</button>
+                            post?.userId !== currentUser?.id && <button className="postDetailsContents" onClick={handleLikeBtn}>{isLiked ? <FilledHeartIcon/> : <UnFilledHeartIcon/>}</button>
                         }
                         <div className="postDetailsContents">{postLikes} Likes</div>
                     </div>

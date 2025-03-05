@@ -17,7 +17,7 @@ export const NavBar = () => {
                     <Link to="/my-posts">My Posts</Link>
                 </li>
                 <li className="btn btn-light nav-btn-color nav-btn">
-                    <Link to="/my-posts">Favorites</Link>
+                    <Link to="/favorites">Favorites</Link>
                 </li>
             </div>
             <div className="profile-logout">
