@@ -41,6 +41,15 @@ export const MyPosts = ({ currentUser }) => {
 
     useEffect(()=>{
         postToDelete > 0 && deletePostById(postToDelete)
+
+        getAllPosts(currentUser.id).then(postsArray => {
+            const myPosts = postsArray.filter(post => post.userId === currentUser.id)
+            setmyPosts(myPosts)
+        })
+
+        getAllTopics().then((res) => {
+            setTopics(res)
+        })
     }, [postToDelete])
 
     return (
@@ -49,7 +58,7 @@ export const MyPosts = ({ currentUser }) => {
             <div className="allPosts">
                 {filteredPosts.map(post => {
                     return (
-                        <Post className="post" post={post} postsLocation={'/my-posts'} setPostToDelete={setPostToDelete} currentUser={currentUser} key={post.id}/>
+                        <Post className="post" post={post} postsLocation={'/my-posts'} setPostToDelete={setPostToDelete} currentUser={currentUser}key={post.id}/>
                     )
                 })}
             </div>
