@@ -46,10 +46,6 @@ export const MyPosts = ({ currentUser }) => {
             const myPosts = postsArray.filter(post => post.userId === currentUser.id)
             setmyPosts(myPosts)
         })
-
-        getAllTopics().then((res) => {
-            setTopics(res)
-        })
     }, [postToDelete])
 
     return (

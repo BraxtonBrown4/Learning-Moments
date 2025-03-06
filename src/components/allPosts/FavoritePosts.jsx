@@ -23,7 +23,7 @@ export const FavoritePosts = ({ currentUser }) => {
         getAllTopics().then((res) => {
             setTopics(res)
         })
-    }, [currentUser])
+    }, [currentUser, likeObj])
 
     useEffect(() => {
         let updatedPosts = favorites
@@ -38,7 +38,7 @@ export const FavoritePosts = ({ currentUser }) => {
 
         setFilteredPosts(updatedPosts)
 
-    }, [favorites, topicId, searchTerm])
+    }, [favorites, topicId, searchTerm, topics])
 
     useEffect(()=>{
         likeObj.id > 0 && updateLike(likeObj)
@@ -46,10 +46,6 @@ export const FavoritePosts = ({ currentUser }) => {
         getAllPosts(currentUser.id).then(postsArray => {
             const favorites = postsArray.filter(post => post.userLikesPost.some(like => like.userId === currentUser.id && like.liked === true))
             setfavorites(favorites)
-        })
-
-        getAllTopics().then((res) => {
-            setTopics(res)
         })
     }, [likeObj])
 
