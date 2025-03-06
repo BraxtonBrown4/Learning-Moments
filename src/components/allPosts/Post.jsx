@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { getPostById } from "../../services/PostsService"
-import { doesLikeExist } from "../../services/LikeServices"
+import { doesLikeExist } from "../../services/PostsService"
 import { FilledHeartIcon, UnFilledHeartIcon } from "../heartIcons/HeartIcons"
 
 export const Post = ({ post, postsLocation, setPostToDelete, currentUser, setLikeObj }) => {

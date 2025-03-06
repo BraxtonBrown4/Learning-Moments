@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { getPostById} from "../../services/PostsService"
-import { createLike, doesLikeExist, updateLike  } from "../../services/LikeServices"
+import { getPostById, doesLikeExist} from "../../services/PostsService"
+import { createLike, updateLike  } from "../../services/LikeServices"
 import "./Posts.css"
 import { FilledHeartIcon, UnFilledHeartIcon } from "../heartIcons/HeartIcons"
 
@@ -61,7 +61,7 @@ export const PostDetails = ({ currentUser }) => {
                                     <div className="postDetailsContents">{post?.user?.fullName}</div>
                                     <Link to={`/${postLocation}/${post?.id}/edit-post`}><div className="postDetailsContents">Edit Post</div></Link>
                                 </div> :
-                                <Link to="/"><div className="postDetailsContents">{post?.user?.fullName}</div></Link> //takes user to creator page
+                                <Link to={`/profile/${post?.userId}`}><div className="postDetailsContents">{post?.user?.fullName}</div></Link>
                         }
                     </div>
                     <div className="postDetailsContents">{post?.title}</div>

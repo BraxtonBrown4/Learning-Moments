@@ -16,6 +16,10 @@ export const createNewPost = (postObj) => {
     }).then((res) => res.json())
 }
 
+export const doesLikeExist = (userId, postId) => {
+    return fetch(`http://localhost:8088/userLikesPost?userId=${userId}&postId=${postId}`).then((res) => res.json())
+}
+
 export const deletePostById = (postId) => {
     return fetch(`http://localhost:8088/posts/${postId}`, {method: "DELETE"}).then((res) => res.json())
 } 

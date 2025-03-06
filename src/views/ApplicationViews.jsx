@@ -8,6 +8,7 @@ import { MyPosts } from "../components/allPosts/MyPosts"
 import { EditPost } from "../components/forms/EditPost"
 import { FavoritePosts } from "../components/allPosts/FavoritePosts"
 import { Profile } from "../components/profile/Profile"
+import { ProfileEdit } from "../components/forms/ProfileEdit"
 
 export const ApplicationViews = () => {
     const [currentUser, setCurrentUser] = useState({})
@@ -22,14 +23,15 @@ export const ApplicationViews = () => {
 
     return (
         <Routes>
-            <Route path="/" element={<><NavBar /> <Outlet /></>}>
+            <Route path="/" element={<><NavBar currentUser={currentUser}/> <Outlet /></>}>
                 <Route index element={<PostList currentUser={currentUser}/>} />
                 <Route path="/:postLocation/:postId" element={<PostDetails currentUser={currentUser}/>} />
                 <Route path="/new-post" element={<NewPost currentUser={currentUser}/>}/>
                 <Route path="/my-posts" element={<MyPosts currentUser={currentUser}/>}/>
                 <Route path="/:postLocation/:postId/edit-post" element={<EditPost currentUser={currentUser}/>}/>
                 <Route path="/favorites" element={<FavoritePosts currentUser={currentUser}/>}/>
-                <Route path="/profile" element={<Profile currentUser={currentUser}/>}/>
+                <Route path="/profile/:authorId" element={<Profile currentUser={currentUser}/>}/>
+                <Route path="/profile/edit" element={<ProfileEdit currentUser={currentUser}/>}/>
             </Route>
         </Routes>
     )
